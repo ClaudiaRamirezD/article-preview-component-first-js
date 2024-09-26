@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+:root {
+    --very-Dark-Grayish-Blue: hsl(217, 19%, 35%);
+    --desaturated-Dark-Blue: hsl(214, 17%, 51%);
+    --grayish-Blue: hsl(212, 23%, 69%);
+    --light-Grayish-Blue: hsl(210, 46%, 95%);
+    --ff-sans: "Manrope", sans-serif;
+    --fw-light: 300;
+    --fw-regular: 500;
+    --fw-bold: 700;
+    --fs-300: .8125rem;
+    --fs-400: .937rem;
+    --fs-500: 1.25rem;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+    margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Set core body defaults */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--ff-sans);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-300);
+    line-height: 1.7;
+    background-color: var(--light-Grayish-Blue);
+    margin: 0;
+    color: var(--very-Dark-Grayish-Blue);
+    font-weight: var(--fw-bold);
+}
+
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+    line-height: 1.6;
+    margin: 0;
+}
+
+h1{
+    font-size: var(--fs-400);
+}
+
+h2{
+    font-size: var(--fs-300);
+    font-weight: var(--fw-bold);
+}
+
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+    scroll-margin-block: 5ex;
+}
+
+.article-preview {
+    width: min(90%, 70rem);
+    border-radius: 1rem;
+    background-color: white ;
+    overflow: hidden;
+    position: relative; 
+}
+
+.article-preview__image {
+    position: relative;
+    overflow: hidden;
+}
+
+.article-preview__image img {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+    
+}
+
+.article-preview__content{
+    padding: 2.2rem 2rem 1.5rem 2rem;
+}
+
+.article-preview__description{
+    font-weight: var(--fw-bold);
+    color: var(--desaturated-Dark-Blue);
+    padding-top: 1rem;
+}
+
+.article-preview__profile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+    position: relative;
+}
+
+.profile__info {
+    margin-left: 1.5rem;  /* Añade un margen de 1.5rem desde la izquierda */
+    flex-grow: 1;  /* Hace que .profile__info ocupe el espacio restante entre la imagen y .share */
+}
+
+.profile__avatar{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+
+.profile__date{
+    color: var(--grayish-Blue);
+    font-weight: var(--fw-regular);
+}
+
+.share {
+    position: relative;
+    display: inline-block; 
+}
+
+.share-button{
+    background-color: var(--light-Grayish-Blue);
+    color: var(--desaturated-Dark-Blue);
+    border: none;
+    font-size: var(--fs-300);
+    padding: .5rem;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-option-container{
+    flex-grow: 1;
+    padding-left: 1.3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.share-option-button{
+    background-color: var(--desaturated-Dark-Blue);
+    color: white;
+    border: none;
+    font-size: var(--fs-300);
+    padding: .6rem;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-button:hover, .share-button.active {
+    background-color: var(--desaturated-Dark-Blue);
+    color: white; /* Cambia el color del SVG */
+}
+
+.share-options{
+    color: var(--grayish-Blue);
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: var(--very-Dark-Grayish-Blue);
+}
+
+.hidden {
+    display: none;
+}
+
+.show-share-options {
+    display: flex;
+}
+
+span {
+    font-weight: var(--fw-light);
+    letter-spacing: 6px;
+}
+
+.share-options .share-button{
+    padding: 0;
+}
+
+.share-options svg{
+    color: white;
+    font-size: var(--fs-300);
+}
+
+/* .share-options {
+    background-color: var(--desaturated-Dark-Blue);
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2;
+}
+
+.share-options.active {
+    display: flex;
+    background-color: var(--dark-gray-blue);
+    color: red;
+    width: 100%;
+    height: 100px;
+}
+
+.share-options::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 50px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--dark-gray-blue);
+    transform: rotate(45deg);
+}
+
+.share-options span {
+    color: var(--gray-blue);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.share-options a {
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.share-options img {
+    width: 10px;
+} */
+
+
+.footer__attribution {
+    font-size: 11px; 
+    text-align: center;
+    margin-top: 2rem;}
+.footer__attribution a { color: hsl(228, 45%, 44%); }  
